@@ -13,10 +13,9 @@ const PrivateRoutes = () => {
   return (
     <div className="flex">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <div className={`flex-1 ml-16 ${isSidebarOpen ? "ml-64" : ""}`}>
-        <Navbar isOpen={isSidebarOpen} />
-        {/* Your content here */}
-      </div>
+      {/* <div className={`flex-1 ml-16 ${isSidebarOpen ? "ml-64" : ""}`}> */}
+      <Navbar isOpen={isSidebarOpen} />
+      {/* </div> */}
     </div>
   );
 };

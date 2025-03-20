@@ -17,15 +17,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       }`}
     >
       {/* Sidebar Toggle Button */}
-      <button
-        onClick={toggleSidebar}
-        className="absolute top-5 right-[-18px] bg-purple-700 text-white p-2 rounded-full z-50"
-      >
-        {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
-      </button>
-
-      <div className="p-5 text-center font-bold text-lg border-b border-gray-700">
-        {isOpen ? "🎓 School Admin" : "🎓"}
+      <div className="flex justify-between items-center p-5">
+        {/* Toggle Icon */}
+        <button
+          onClick={toggleSidebar}
+          className="bg-purple-700 text-white p-2 rounded-full"
+        >
+          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+        </button>
+        {/* Title */}
+        <div className="font-bold text-lg">
+          {isOpen ? "🎓 School Admin" : "🎓"}
+        </div>
       </div>
 
       <nav className="mt-4">

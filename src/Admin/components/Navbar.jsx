@@ -3,16 +3,16 @@ import { FaSearch, FaBell, FaUserCircle } from "react-icons/fa";
 const Navbar = ({ isOpen }) => {
   return (
     <div
-      className={`w-full bg-white shadow-md px-6 py-3 flex justify-between items-center fixed top-0 left-0 right-0 transition-all duration-300 ${
-        isOpen ? "pl-64" : "pl-16"
+      className={`w-350 bg-white shadow-md px-6 py-3 flex justify-between items-center fixed top-0 transition-all duration-300 ${
+        isOpen ? "ml-64" : "ml-16"
       }`}
     >
       {/* Search Bar */}
-      <div className="relative">
+      <div className="relative flex-1">
         <input
           type="text"
           placeholder="Search..."
-          className="bg-gray-100 px-4 py-2 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="bg-gray-100 px-4 py-2 rounded-lg pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500 w-full"
         />
         <FaSearch className="absolute left-3 top-3 text-gray-500" />
       </div>
