@@ -226,6 +226,10 @@ const Home = () => {
                 text: "I've gained confidence and knowledge!",
                 name: "Nisha Chaudhary, 10th Grade",
               },
+              {
+                text: "The teachers at this school went above and beyond to make learning enjoyable and meaningful. I am a better person because of this experience.!",
+                name: "Arun Sharma, 12th Grade",
+              },
             ].map((testimonial, index) => (
               <div
                 key={index}
