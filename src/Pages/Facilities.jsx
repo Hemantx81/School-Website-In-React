@@ -11,7 +11,7 @@ const Facilities = () => {
       description:
         "Fully equipped with smart boards, projectors, and comfortable seating arrangements.",
       images: [
-        "https://via.placeholder.com/600x400?text=Classroom+1",
+        "https://images.pexels.com/photos/5212326/pexels-photo-5212326.jpeg?auto=compress&cs=tinysrgb&w=600",
         "https://via.placeholder.com/600x400?text=Classroom+2",
         "https://via.placeholder.com/600x400?text=Classroom+3",
       ],
@@ -22,7 +22,7 @@ const Facilities = () => {
       description:
         "Well-maintained physics, chemistry, and biology labs for practical learning.",
       images: [
-        "https://via.placeholder.com/600x400?text=Lab+1",
+        "https://cdn.pixabay.com/photo/2022/10/08/02/10/technology-7506133_1280.jpg",
         "https://via.placeholder.com/600x400?text=Lab+2",
         "https://via.placeholder.com/600x400?text=Lab+3",
       ],
@@ -33,9 +33,9 @@ const Facilities = () => {
       description:
         "A vast collection of books, journals, and digital resources for research and study.",
       images: [
-        "https://via.placeholder.com/600x400?text=Library+1",
-        "https://via.placeholder.com/600x400?text=Library+2",
-        "https://via.placeholder.com/600x400?text=Library+3",
+        "https://cdn.pixabay.com/photo/2014/10/14/20/14/library-488690_1280.jpg",
+        "https://cdn.pixabay.com/photo/2016/08/24/16/20/books-1617327_1280.jpg",
+        "https://cdn.pixabay.com/photo/2017/08/06/22/01/books-2596809_1280.jpg",
       ],
     },
     {
@@ -44,7 +44,7 @@ const Facilities = () => {
       description:
         "High-speed internet and latest software for hands-on IT learning.",
       images: [
-        "https://via.placeholder.com/600x400?text=Computer+Lab+1",
+        "https://images.pexels.com/photos/10638069/pexels-photo-10638069.jpeg?auto=compress&cs=tinysrgb&w=600",
         "https://via.placeholder.com/600x400?text=Computer+Lab+2",
         "https://via.placeholder.com/600x400?text=Computer+Lab+3",
       ],
@@ -55,7 +55,7 @@ const Facilities = () => {
       description:
         "Basketball court, football ground, and indoor games facilities for physical fitness.",
       images: [
-        "https://via.placeholder.com/600x400?text=Sports+1",
+        "https://cdn.pixabay.com/photo/2022/03/01/21/59/sport-7042146_1280.jpg",
         "https://via.placeholder.com/600x400?text=Sports+2",
         "https://via.placeholder.com/600x400?text=Sports+3",
       ],
@@ -66,7 +66,7 @@ const Facilities = () => {
       description:
         "Hygienic and nutritious meals served in a comfortable dining environment.",
       images: [
-        "https://via.placeholder.com/600x400?text=Cafeteria+1",
+        "https://images.pexels.com/photos/3952060/pexels-photo-3952060.jpeg?auto=compress&cs=tinysrgb&w=600",
         "https://via.placeholder.com/600x400?text=Cafeteria+2",
         "https://via.placeholder.com/600x400?text=Cafeteria+3",
       ],
