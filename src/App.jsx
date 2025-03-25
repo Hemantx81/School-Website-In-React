@@ -6,9 +6,9 @@ import {
   Route,
 } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-// import { Home } from "lucide-react";
+
 import Home from "./Pages/Home";
-import { AppRoutes } from "./Routes/AppRoutes";
+
 import Footer from "./Components/Footer";
 import Gallery from "./Components/Gallery";
 import Contact from "./Pages/Contact";
@@ -18,14 +18,14 @@ import Notice from "./Pages/Notice";
 import Career from "./Pages/Career";
 import Facilities from "./Pages/Facilities";
 import PrivateRoutes from "./PrivateRoutes.jsx/PrivateRoutes";
+import AdminApp from "./Admin/AdminApp";
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
-        {/* <AppRoutes /> */}
-        {/* <Gallery /> */}
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admissions" element={<Admissions />} />
@@ -36,8 +36,10 @@ function App() {
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/about" element={<About />} />
           <Route path="/privateROutes/pr" element={<PrivateRoutes />} />
+          <Route path="/admin/*" element={<AdminApp />} />{" "}
         </Routes>
         <Footer />
+        <AdminApp />
       </Router>
     </>
   );

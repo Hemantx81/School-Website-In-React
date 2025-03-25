@@ -5,9 +5,9 @@ import {
   FaChalkboardTeacher,
   FaUserPlus,
   FaCog,
-  FaTimes,
   FaBars,
 } from "react-icons/fa";
+import { useState } from "react";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
@@ -16,73 +16,42 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         isOpen ? "w-64" : "w-16"
       }`}
     >
-      {/* Sidebar Toggle Button */}
-      <div className="flex justify-between items-center p-5">
-        {/* Toggle Icon */}
-        <button
-          onClick={toggleSidebar}
-          className="bg-purple-700 text-white p-2 rounded-full"
-        >
-          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
-        </button>
-        {/* Title */}
-        <div className="font-bold text-lg">
+      <div className="p-5 flex justify-between items-center border-b border-gray-700">
+        <span className="font-bold text-lg">
           {isOpen ? "🎓 School Admin" : "🎓"}
-        </div>
+        </span>
+        <button onClick={toggleSidebar} className="text-white">
+          <FaBars size={24} />
+        </button>
       </div>
 
       <nav className="mt-4">
         <ul>
-          <li>
-            <NavLink
-              to="/"
-              className="flex items-center px-5 py-3 hover:bg-purple-700 transition"
-              activeClassName="bg-purple-700"
-            >
-              <FaTachometerAlt className="mr-3" />
-              {isOpen && "Dashboard"}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/students"
-              className="flex items-center px-5 py-3 hover:bg-purple-700 transition"
-              activeClassName="bg-purple-700"
-            >
-              <FaUserGraduate className="mr-3" />
-              {isOpen && "Students"}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/teachers"
-              className="flex items-center px-5 py-3 hover:bg-purple-700 transition"
-              activeClassName="bg-purple-700"
-            >
-              <FaChalkboardTeacher className="mr-3" />
-              {isOpen && "Teachers"}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/admissions"
-              className="flex items-center px-5 py-3 hover:bg-purple-700 transition"
-              activeClassName="bg-purple-700"
-            >
-              <FaUserPlus className="mr-3" />
-              {isOpen && "Admissions"}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/settings"
-              className="flex items-center px-5 py-3 hover:bg-purple-700 transition"
-              activeClassName="bg-purple-700"
-            >
-              <FaCog className="mr-3" />
-              {isOpen && "Settings"}
-            </NavLink>
-          </li>
+          {[
+            { to: "/dashboard", icon: <FaTachometerAlt />, label: "Dashboard" },
+            { to: "/students", icon: <FaUserGraduate />, label: "Students" },
+            {
+              to: "/teachers",
+              icon: <FaChalkboardTeacher />,
+              label: "Teachers",
+            },
+            {
+              to: "/admissions",
+              icon: <FaUserPlus />,
+              label: "Admissions",
+            },
+            { to: "/settings", icon: <FaCog />, label: "Settings" },
+          ].map(({ to, icon, label }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                className="flex items-center px-5 py-3 hover:bg-purple-700 transition"
+              >
+                {icon}{" "}
+                <span className={`${isOpen ? "ml-3" : "hidden"}`}>{label}</span>
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
