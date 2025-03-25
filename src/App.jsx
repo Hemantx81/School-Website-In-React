@@ -39,7 +39,6 @@ function App() {
           <Route path="/admin/*" element={<AdminApp />} />{" "}
         </Routes>
         <Footer />
-        <AdminApp />
       </Router>
     </>
   );
