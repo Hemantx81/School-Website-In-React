@@ -35,7 +35,7 @@ const Dashboard = () => {
       </div>
 
       {/* Chart Section */}
-      <div className="bg-black grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-6 relative">
         <ChartComponent />
         <PieChartComponent />
       </div>

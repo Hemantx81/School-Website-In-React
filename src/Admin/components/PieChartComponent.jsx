@@ -26,7 +26,7 @@ const PieChartComponent = () => {
   };
 
   return (
-    <div className="bg-black p-6 rounded-lg shadow-md">
+    <div className="bg-white p-6 rounded-lg shadow-md">
       <Pie data={data} options={options} />
     </div>
   );
