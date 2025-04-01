@@ -36,7 +36,7 @@ function App() {
           <Route path="/facilities" element={<Facilities />} />
           <Route path="/about" element={<About />} />
           <Route path="/privateROutes/pr" element={<PrivateRoutes />} />
-          <Route path="/admin/*" element={<AdminApp />} />{" "}
+          <Route path="/*" element={<AdminApp />} />{" "}
         </Routes>
         <Footer />
       </Router>

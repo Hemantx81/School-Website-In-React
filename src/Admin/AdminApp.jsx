@@ -25,10 +25,10 @@ function AdminApp() {
         {/* <Dashboard /> */}
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="students" element={<Students />} />
-          <Route path="teachers" element={<Teachers />} />
-          <Route path="admissions" element={<AdminAdmissions />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="/students" element={<Students />} />
+          <Route path="/teachers" element={<Teachers />} />
+          <Route path="/admissions" element={<AdminAdmissions />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
     </div>
