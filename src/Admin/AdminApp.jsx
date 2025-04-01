@@ -8,6 +8,7 @@ import Settings from "./pages/Settings";
 import Teachers from "./pages/Teachers";
 import AdminAdmissions from "./pages/AdminAdmissions";
 import AddStudent from "./pages/AddStudent";
+import AddTeacher from "./pages/AddTeacher";
 // import Dashboard from "./pages/Dashboard";
 
 function AdminApp() {
@@ -27,8 +28,9 @@ function AdminApp() {
         <Routes>
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/students" element={<Students />} />
-          <Route path="/students/add" element={<AddStudent />} />
+          <Route path="/students/addstudent" element={<AddStudent />} />
           <Route path="/teachers" element={<Teachers />} />
+          <Route path="/teachers/addteacher" element={<AddTeacher />} />
           <Route path="/Adminadmissions" element={<AdminAdmissions />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
