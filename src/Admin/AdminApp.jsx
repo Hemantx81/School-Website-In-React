@@ -7,6 +7,7 @@ import Students from "./pages/Students";
 import Settings from "./pages/Settings";
 import Teachers from "./pages/Teachers";
 import AdminAdmissions from "./pages/AdminAdmissions";
+import AddStudent from "./pages/AddStudent";
 // import Dashboard from "./pages/Dashboard";
 
 function AdminApp() {
@@ -18,14 +19,15 @@ function AdminApp() {
       <Navbar isOpen={isOpen} />
 
       <div
-        className={`mt-16 p-6 transition-all duration-300 ${
+        className={`mt-16 p-6 transition-all duration-300 relative ${
           isOpen ? "ml-64 w-[calc(100%-16rem)]" : "ml-16 w-[calc(100%-4rem)]"
         }`}
       >
         {/* <Dashboard /> */}
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin" element={<Dashboard />} />
           <Route path="/students" element={<Students />} />
+          <Route path="/students/add" element={<AddStudent />} />
           <Route path="/teachers" element={<Teachers />} />
           <Route path="/Adminadmissions" element={<AdminAdmissions />} />
           <Route path="/settings" element={<Settings />} />

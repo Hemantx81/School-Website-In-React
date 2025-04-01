@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       <nav className="mt-4">
         <ul>
           {[
-            { to: "/dashboard", icon: <FaTachometerAlt />, label: "Dashboard" },
+            { to: "/admin", icon: <FaTachometerAlt />, label: "Dashboard" },
             { to: "/students", icon: <FaUserGraduate />, label: "Students" },
             {
               to: "/teachers",
