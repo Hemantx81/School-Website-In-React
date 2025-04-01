@@ -36,7 +36,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               label: "Teachers",
             },
             {
-              to: "/admissions",
+              to: "/Adminadmissions",
               icon: <FaUserPlus />,
               label: "Admissions",
             },
