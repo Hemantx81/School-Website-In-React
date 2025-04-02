@@ -1,5 +1,6 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
-const TableComponent = ({ data }) => {
+
+const TableComponent = ({ data, onEdit, onDelete }) => {
   return (
     <div className="overflow-x-auto bg-white shadow-md rounded-lg">
       <table className="min-w-full table-auto">
@@ -7,7 +8,10 @@ const TableComponent = ({ data }) => {
           <tr>
             <th className="p-3 text-left">Student ID</th>
             <th className="p-3 text-left">Name</th>
+            <th className="p-3 text-left">Course</th>
             <th className="p-3 text-left">Email</th>
+            <th className="p-3 text-left">Studied At</th>
+            <th className="p-3 text-left">Phone Number</th>
             <th className="p-3 text-left">Status</th>
             <th className="p-3 text-left">Actions</th>
           </tr>
@@ -17,7 +21,10 @@ const TableComponent = ({ data }) => {
             <tr key={student.id} className="border-b hover:bg-gray-100">
               <td className="p-3">{student.id}</td>
               <td className="p-3">{student.name}</td>
+              <td className="p-3">{student.course}</td>
               <td className="p-3">{student.email}</td>
+              <td className="p-3">{student.studied_at}</td>
+              <td className="p-3">{student.phone_number}</td>
               <td className="p-3">
                 <span
                   className={`${
@@ -32,13 +39,13 @@ const TableComponent = ({ data }) => {
               <td className="p-3 space-x-2">
                 <button
                   className="text-blue-500"
-                  onClick={() => alert("Edit student")} // Navigate to edit page
+                  onClick={() => onEdit(student)}
                 >
                   <FaEdit />
                 </button>
                 <button
                   className="text-red-500"
-                  onClick={() => alert("Delete student")} // Delete student
+                  onClick={() => onDelete(student.id)}
                 >
                   <FaTrash />
                 </button>

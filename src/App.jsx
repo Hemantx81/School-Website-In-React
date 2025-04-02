@@ -19,7 +19,8 @@ import Career from "./Pages/Career";
 import Facilities from "./Pages/Facilities";
 import PrivateRoutes from "./PrivateRoutes.jsx/PrivateRoutes";
 import AdminApp from "./Admin/AdminApp";
-
+import Test from "./Test";
+// import { Test } from "./Test";
 function App() {
   return (
     <>
@@ -37,6 +38,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/privateROutes/pr" element={<PrivateRoutes />} />
           <Route path="/*" element={<AdminApp />} />{" "}
+          <Route path="/test" element={<Test />} />
         </Routes>
         <Footer />
       </Router>

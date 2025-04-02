@@ -1,28 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import TableComponent from "../components/TableComponent";
-// Custom Table component
 
 const Students = () => {
-  const [search, setSearch] = useState("");
+  const [students, setStudents] = useState([]);
   const navigate = useNavigate();
 
-  // Sample student data
-  const students = [
-    { id: 1, name: "John Doe", email: "john@example.com", status: "Active" },
-    {
-      id: 2,
-      name: "Jane Smith",
-      email: "jane@example.com",
-      status: "Inactive",
-    },
-  ];
+  useEffect(() => {
+    const fetchStudents = async () => {
+      try {
+        const response = await fetch(
+          "http://127.0.0.1:8000/api/admissiondata_show/"
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setStudents(data);
+      } catch (error) {
+        console.error("Error fetching student data:", error);
+      }
+    };
 
-  // Search filter for students
-  const filteredStudents = students.filter((student) =>
-    student.name.toLowerCase().includes(search.toLowerCase())
-  );
+    fetchStudents();
+  }, []);
 
   return (
     <div className="p-6">
@@ -34,8 +36,6 @@ const Students = () => {
         <input
           type="text"
           placeholder="Search students..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
           className="border p-2 rounded-lg w-1/3"
         />
       </div>
@@ -48,8 +48,8 @@ const Students = () => {
         Add New Student
       </button>
 
-      {/* Students Table */}
-      <TableComponent data={filteredStudents} />
+      {/* Pass backend data to TableComponent */}
+      <TableComponent data={students} />
     </div>
   );
 };
