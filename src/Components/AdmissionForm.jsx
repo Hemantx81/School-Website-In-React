@@ -1,25 +1,49 @@
 import { useState } from "react";
 
+// const [message, setMessage] = useState("");
 const AdmissionForm = () => {
   const [formData, setFormData] = useState({
-    interested_for: "",
+    course: "",
     name: "",
     email: "",
-    mobile: "",
-    address: "",
-    schoolname: "",
-    pname: "",
-    pmobile: "",
+    phone_number: "",
+    // address: "",
+    studied_at: "",
+    parent_name: "",
+    parent_number: "",
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Send formData to an API here
+
+    try {
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/admission_registration/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      // Check if response is OK (Status: 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json(); // Parse response JSON
+      console.log("Success:", data); // Check the actual response
+      alert("Form submitted successfully!"); // Show a success message
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to submit form. Please try again.");
+    }
   };
 
   return (
@@ -38,7 +62,7 @@ const AdmissionForm = () => {
         <h2 className="text-2xl font-bold text-center text-purple-700 mb-5">
           Apply Now for Admission
         </h2>
-
+        {/* {message && <p className="text-center text-green-600">{message}</p>} */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Applying For */}
           <div>
@@ -46,8 +70,8 @@ const AdmissionForm = () => {
               Applying For
             </label>
             <select
-              name="interested_for"
-              value={formData.interested_for}
+              name="course"
+              value={formData.course}
               onChange={handleChange}
               required
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
@@ -94,23 +118,25 @@ const AdmissionForm = () => {
             />
           </div>
 
-          {/* Mobile */}
+          {/* phone_number */}
           <div>
-            <label className="block text-gray-700 font-semibold">Mobile</label>
+            <label className="block text-gray-700 font-semibold">
+              phone_number
+            </label>
             <input
               type="tel"
-              name="mobile"
+              name="phone_number"
               pattern="[0-9]{10}"
-              value={formData.mobile}
+              value={formData.phone_number}
               onChange={handleChange}
               required
-              placeholder="Mobile Number"
+              placeholder="phone_number Number"
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
             />
           </div>
 
           {/* Address */}
-          <div>
+          {/* <div>
             <label className="block text-gray-700 font-semibold">Address</label>
             <input
               type="text"
@@ -121,7 +147,7 @@ const AdmissionForm = () => {
               placeholder="Current Address"
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
             />
-          </div>
+          </div> */}
 
           {/* Studied School */}
           <div>
@@ -130,8 +156,8 @@ const AdmissionForm = () => {
             </label>
             <input
               type="text"
-              name="schoolname"
-              value={formData.schoolname}
+              name="studied_at"
+              value={formData.studied_at}
               onChange={handleChange}
               required
               placeholder="Studied School"
@@ -146,8 +172,8 @@ const AdmissionForm = () => {
             </label>
             <input
               type="text"
-              name="pname"
-              value={formData.pname}
+              name="parent_name"
+              value={formData.parent_name}
               onChange={handleChange}
               required
               placeholder="Parent's Name"
@@ -155,19 +181,19 @@ const AdmissionForm = () => {
             />
           </div>
 
-          {/* Parent's Mobile */}
+          {/* Parent's phone_number */}
           <div>
             <label className="block text-gray-700 font-semibold">
-              Parent's Mobile
+              Parent's phone_number
             </label>
             <input
               type="tel"
-              name="pmobile"
+              name="parent_number"
               pattern="[0-9]{10}"
-              value={formData.pmobile}
+              value={formData.parent_number}
               onChange={handleChange}
               required
-              placeholder="Parent's Mobile Number"
+              placeholder="Parent's  Number"
               className="w-full mt-1 p-2 border border-gray-300 rounded-lg"
             />
           </div>
