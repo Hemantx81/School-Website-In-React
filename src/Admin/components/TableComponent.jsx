@@ -1,6 +1,6 @@
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaCheck } from "react-icons/fa";
 
-const TableComponent = ({ data, onEdit, onDelete }) => {
+const TableComponent = ({ data, onEdit, onDelete, onApprove }) => {
   return (
     <div className="overflow-x-auto bg-white shadow-md rounded-lg">
       <table className="min-w-full table-auto">
@@ -28,7 +28,7 @@ const TableComponent = ({ data, onEdit, onDelete }) => {
               <td className="p-3">
                 <span
                   className={`${
-                    student.status === "Active"
+                    student.status === "Approved"
                       ? "text-green-500"
                       : "text-red-500"
                   }`}
@@ -37,6 +37,13 @@ const TableComponent = ({ data, onEdit, onDelete }) => {
                 </span>
               </td>
               <td className="p-3 space-x-2">
+                <button
+                  className="text-green-500"
+                  onClick={() => onApprove(student.id)}
+                  disabled={student.status === "Approved"}
+                >
+                  <FaCheck />
+                </button>
                 <button
                   className="text-blue-500"
                   onClick={() => onEdit(student)}

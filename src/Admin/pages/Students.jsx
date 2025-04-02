@@ -26,6 +26,59 @@ const Students = () => {
     fetchStudents();
   }, []);
 
+  // Handle Edit - Navigate to the Edit page with the student's ID
+  const handleEdit = (student) => {
+    navigate(`/students/edit/${student.id}`);
+  };
+
+  // Handle Delete - Call API to delete the student and remove them from the state
+  const handleDelete = async (studentId) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/delete_student/${studentId}/`,
+        { method: "DELETE" }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to delete student. Status: ${response.status}`);
+      }
+
+      // Remove deleted student from the state
+      setStudents(students.filter((student) => student.id !== studentId));
+      console.log("Student deleted successfully.");
+    } catch (error) {
+      console.error("Error deleting student:", error);
+    }
+  };
+
+  // Handle Approve - Change student's status to "Approved"
+  const handleApprove = async (studentId) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/update_status/${studentId}/`,
+        { method: "PUT" }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to approve student. Status: ${response.status}`
+        );
+      }
+
+      // Update the student status to "Approved" in state
+      setStudents(
+        students.map((student) =>
+          student.id === studentId
+            ? { ...student, status: "Approved" }
+            : student
+        )
+      );
+      console.log("Student approved successfully.");
+    } catch (error) {
+      console.error("Error approving student:", error);
+    }
+  };
+
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Manage Students</h1>
@@ -48,8 +101,13 @@ const Students = () => {
         Add New Student
       </button>
 
-      {/* Pass backend data to TableComponent */}
-      <TableComponent data={students} />
+      {/* Pass backend data and action handlers to TableComponent */}
+      <TableComponent
+        data={students}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        onApprove={handleApprove}
+      />
     </div>
   );
 };
