@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import TableComponent from "../components/TableComponent";
+import EditStudentModal from "../components/EditStudentModal"; // Import modal
 
 const Students = () => {
   const [students, setStudents] = useState([]);
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,24 +29,26 @@ const Students = () => {
     fetchStudents();
   }, []);
 
-  // Handle Edit - Navigate to the Edit page with the student's ID
+  // Handle Edit - Open modal with selected student data
   const handleEdit = (student) => {
-    navigate(`/students/edit/${student.id}`);
+    setSelectedStudent(student);
+    setIsModalOpen(true);
   };
 
-  // Handle Delete - Call API to delete the student and remove them from the state
+  // Handle Delete - Remove student from the database
   const handleDelete = async (studentId) => {
     try {
       const response = await fetch(
         `http://127.0.0.1:8000/api/delete_student/${studentId}/`,
-        { method: "DELETE" }
+        {
+          method: "DELETE",
+        }
       );
 
       if (!response.ok) {
         throw new Error(`Failed to delete student. Status: ${response.status}`);
       }
 
-      // Remove deleted student from the state
       setStudents(students.filter((student) => student.id !== studentId));
       console.log("Student deleted successfully.");
     } catch (error) {
@@ -51,12 +56,14 @@ const Students = () => {
     }
   };
 
-  // Handle Approve - Change student's status to "Approved"
+  // Handle Approve - Update student status to "Approved"
   const handleApprove = async (studentId) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/update_status/${studentId}/`,
-        { method: "PUT" }
+        `http://127.0.0.1:8000/api/update_status/${studentId}/approve/`,
+        {
+          method: "PATCH",
+        }
       );
 
       if (!response.ok) {
@@ -65,7 +72,6 @@ const Students = () => {
         );
       }
 
-      // Update the student status to "Approved" in state
       setStudents(
         students.map((student) =>
           student.id === studentId
@@ -77,6 +83,16 @@ const Students = () => {
     } catch (error) {
       console.error("Error approving student:", error);
     }
+  };
+
+  // Handle Update - Update the student data in the state after successful update
+  const handleUpdate = (updatedStudent) => {
+    setStudents(
+      students.map((student) =>
+        student.id === updatedStudent.id ? updatedStudent : student
+      )
+    );
+    setIsModalOpen(false);
   };
 
   return (
@@ -101,13 +117,22 @@ const Students = () => {
         Add New Student
       </button>
 
-      {/* Pass backend data and action handlers to TableComponent */}
+      {/* Pass data and handlers to TableComponent */}
       <TableComponent
         data={students}
         onEdit={handleEdit}
         onDelete={handleDelete}
         onApprove={handleApprove}
       />
+
+      {/* Show Edit Modal if needed */}
+      {isModalOpen && (
+        <EditStudentModal
+          student={selectedStudent}
+          onClose={() => setIsModalOpen(false)}
+          onUpdate={handleUpdate}
+        />
+      )}
     </div>
   );
 };
