@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const EditStudentModal = ({ student, onClose, onUpdate }) => {
   const [formData, setFormData] = useState({
+    student_id: student.id,
     name: student.name,
     course: student.course,
     email: student.email,
@@ -17,7 +18,7 @@ const EditStudentModal = ({ student, onClose, onUpdate }) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/students/${student.id}/update/`,
+        `http://127.0.0.1:8000/api/update_student/`,
         {
           method: "PUT",
           headers: {

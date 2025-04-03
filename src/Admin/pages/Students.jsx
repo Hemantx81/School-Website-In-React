@@ -60,9 +60,9 @@ const Students = () => {
   const handleApprove = async (studentId) => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/api/update_status/${studentId}/approve/`,
+        `http://127.0.0.1:8000/api/admission_registration/${studentId}/`,
         {
-          method: "PATCH",
+          method: "PUT",
         }
       );
 
